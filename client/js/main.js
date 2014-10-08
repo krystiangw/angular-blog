@@ -62,6 +62,7 @@ window.Blog = angular.module('Blog', ['ngRoute', 'restangular', 'LocalStorageMod
             return deferred.promise;
         }
     }
+    
 
     $routeProvider
         .when('/', {
@@ -77,7 +78,10 @@ window.Blog = angular.module('Blog', ['ngRoute', 'restangular', 'LocalStorageMod
         })
         .when('/sessions/destroy', {
             controller: 'SessionDestroyCtrl',
-            templateUrl: partialsDir + '/session/destroy.html'
+            templateUrl: partialsDir + '/session/destroy.html',
+            resolve: {
+                redirectIfNotAuthenticated: redirectIfNotAuthenticated('/sessions/create')
+            }
         })
         .when('/users/create', {
             controller: 'UserCreateCtrl',

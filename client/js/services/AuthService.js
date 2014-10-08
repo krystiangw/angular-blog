@@ -8,7 +8,9 @@ Blog.service('AuthService', AuthService = function($q, localStorageService, Sess
             return deferred.resolve(user);
         }, function(response) {
             if (response.status == 401) {
-                return deferred.reject(false);
+                return deferred.reject('Invalid email or password');
+            } else if (response.status =='422') {
+                return deferred.reject('Fill requied fields');
             }
             throw new Error('No handler for status code ' + response.status);
         });
