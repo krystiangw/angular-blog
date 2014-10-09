@@ -21,7 +21,9 @@
                 </nav>
             </div>
         </div>
- 
+        <p style="min-height:50px; width:600px;">
+            <alert ng-if="alert != null" type="{{alert.type}}">{{alert.msg}}</alert>
+        </p>
         <div class="container main-view">
  
             <div ng-view></div>
@@ -40,6 +42,9 @@
         <script type="text/javascript" src="./bower_components/lodash/dist/lodash.js"></script>
         <script type="text/javascript" src="./bower_components/restangular/dist/restangular.js"></script>
         <script type="text/javascript" src="./bower_components/angular-local-storage/angular-local-storage.js"></script>
+
+        <script type="text/javascript" src="./bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
         <script type="text/javascript" src="./js/main.js"></script>
         <script type="text/javascript" src="./js/controllers/HomeDetailCtrl.js"></script>
         <script type="text/javascript" src="./js/controllers/ApplicationCtrl.js"></script>
@@ -52,6 +57,13 @@
         <script type="text/javascript" src="./js/factories/Post.js"></script>
         <script type="text/javascript" src="./js/services/AuthService.js"></script>
         <script type="text/javascript" src="./js/directives/match.js"></script>
+
+        <script id="template/alert/alert.html" type="text/ng-template">
+            <div class='alert' ng-class='type && "alert-" + type'>
+                <button ng-show='closeable' type='button' class='close' ng-click='close()'>Close</button>
+                <div ng-transclude></div>
+            </div>
+        </script>
  
     </body>
 </html>

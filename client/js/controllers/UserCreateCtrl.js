@@ -1,5 +1,8 @@
 Blog.controller('UserCreateCtrl',
-	['$scope', function($scope) {
-		
+	['$scope', 'User', function($scope, User) {
+		$scope.user = {
+			email: '',
+			password:''
+		}
 	}
 ]);	

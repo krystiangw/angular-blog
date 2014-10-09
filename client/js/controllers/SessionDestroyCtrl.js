@@ -1,11 +1,13 @@
 Blog.controller('SessionDestroyCtrl',
-	['$scope', 'AuthService', function($scope, AuthService) {
+	['$scope', 'AuthService', '$location', function($scope, AuthService, $location) {
 
   $scope.logout = function () {
-  	console.log("wylogowano");
     AuthService.logout();
     $scope.$emit('changeState', false);
+    $location.path('/');
   };
-	
-	}
-]);	
+
+  $scope.cancel = function() {
+		$location.path('/');
+	};
+}]);	
